@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="lo" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounting Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap');
+        body { font-family: 'Noto Sans Lao', sans-serif; }
+    </style>
+</head>
+<body  id="app">
+
+    <navbar-component @change-Page="(page) => currentPage = page"> </navbar-component>
+    
+      <component :is="currentPage" class="m-[20px]"></component>
+
+     
+      
+      
+   
+    
+        
+  
+   
+
+     
+
+    
+    
+    <script src="Page/Home.js"></script>    
+    <script src="Page/expense.js"></script> 
+    <script src="Coponents/Navbar.js"></script> 
+
+</navbar-component>
+
+
+<script>
+    const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            currentPage: 'expense-component',
+            salarymonthly: [
+                { name: 'Beer Thao', baseSalary: 10000000, tax: 500000, netSalary: 9500000 },
+                { name: 'Somsak', baseSalary: 8000000, tax: 300000, netSalary: 7700000 }
+            ],
+            menu : [
+                {name: "ສ້າງໃບສະເໜີຈ່າຍ", comp:"create-payment"},
+                {name: "ສະຫຼຸບຈ່າຍລ່ວງໜ້າ", comp: "clear-payment"}
+            ]
+            
+            
+        }
+    },
+    components: {
+        'home-component': Home,
+        'expense-component' : expense,
+        'navbar-component' : Navbar
+    }
+}).mount('#app');
+</script>
+</html>
